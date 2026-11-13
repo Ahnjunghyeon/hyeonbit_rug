@@ -1,0 +1,42 @@
+{
+  "name": "hyeonbit-rug-windows",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hyeonbit Rug for the Windows desktop",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "package:win": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./Build-Windows.ps1",
+    "shortcut:win": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./Create-Shortcut.ps1"
+  },
+  "devDependencies": {
+    "electron": "45.2.3"
+  },
+  "productName": "현빗 러그",
+  "build": {
+    "appId": "com.hyeonbit.rug",
+    "productName": "현빗 러그",
+    "win": {
+      "icon": "app-icon-v2.ico",
+      "executableName": "HyeonbitRug",
+      "signAndEditExecutable": true
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "*.js",
+      "*.cjs",
+      "*.html",
+      "*.css",
+      "*.ps1",
+      "*.ico",
+      "*.png",
+      "assets/**/*",
+      "licenses/**/*",
+      "LICENSE",
+      "package.json",
+      "!cleanup-obsolete.cjs"
+    ]
+  }
+}

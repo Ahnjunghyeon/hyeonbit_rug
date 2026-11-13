@@ -1,0 +1,120 @@
+    #hyeonbit-rug {color-scheme:light dark;color:light-dark(#1c2431,#eaf0fa);font:14px system-ui,sans-serif}
+    #hyeonbit-rug header,#hyeonbit-rug footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;padding:10px 12px;background:light-dark(#f2f5fa,#172132)}
+    #hyeonbit-rug .skill-picker{display:grid;gap:7px;width:100%}
+    #hyeonbit-rug .skill-group{display:flex;flex-wrap:wrap;gap:6px;min-inline-size:0;margin:0;padding:4px 8px 8px;border:1px solid light-dark(#c2cfe1,#526788);border-radius:9px}
+    #hyeonbit-rug .skill-group:first-child button{font-size:13px}
+    #hyeonbit-rug .skill-group legend{padding:0 4px;font-size:12px;font-weight:700}
+    #hyeonbit-rug small{font-size:12px;letter-spacing:.09em;color:light-dark(#505f73,#a4b5cc)}
+    #hyeonbit-rug main{position:relative;background:#392c29}
+    #hyeonbit-rug canvas{display:block;width:100%;height:clamp(315px,55vw,485px);touch-action:none}
+    #hyeonbit-rug #hint{position:absolute;left:12px;top:9px;padding:6px 9px;margin:0;color:#efe9d9;background:#1b1716d9;border-radius:7px;pointer-events:none}
+    #hyeonbit-rug button{font:inherit;color:inherit;background:light-dark(#e4eaf4,#263753);border:1px solid light-dark(#c2cfe1,#526788);border-radius:8px;padding:8px 11px;cursor:pointer}
+    #hyeonbit-rug button[aria-pressed=true]{background:light-dark(#bcd6f3,#395b82)}
+    #hyeonbit-rug dialog{background:light-dark(#f6f8fc,#202e44);color:inherit;border:1px solid #6681a7;border-radius:12px;width:min(360px,85%)}
+    @media(pointer:coarse){#hyeonbit-rug button{min-height:44px}}
+    body.native-rug{margin:0;background:transparent;overflow:hidden}
+    body.native-rug #hyeonbit-rug :is(header,footer,#hint,dialog){display:none}
+    body.native-rug #hyeonbit-rug main{background:transparent}
+    body.native-rug #hyeonbit-rug canvas{height:100vh}
+    body.native-rug.cut-armed #hyeonbit-rug canvas{background-color:rgba(0,0,0,.012);cursor:crosshair}
+#hyeonbit-rug .skill-toast{position:fixed;left:50%;bottom:52px;transform:translateX(-50%);z-index:100;width:min(330px,90vw);height:154px;overflow:hidden;border:1px solid #8f77554f;border-radius:23px;background:linear-gradient(180deg,#0b1321eb,#1d2939f2 45%,#0c1422ed);box-shadow:inset 0 1px #d6dfed18,inset 0 -2px 3px #0009,0 16px 40px #0007;pointer-events:none;text-align:center;opacity:1;transition:opacity .2s ease}
+#hyeonbit-rug .skill-toast[hidden]{display:none}
+#hyeonbit-rug .size-toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%);z-index:101;padding:11px 20px;border:2px solid #718096;border-bottom-width:4px;border-radius:9px;background:#142031ed;box-shadow:inset 0 1px #ffffff22,0 8px 20px #0006;color:#ffe2a4;font:700 15px system-ui,sans-serif;pointer-events:none}
+#hyeonbit-rug .size-toast[hidden]{display:none}
+#hyeonbit-rug .skill-toast.leaving{opacity:0}
+#hyeonbit-rug .skill-toast::before{content:'';position:absolute;left:11px;right:11px;top:55px;height:43px;border-top:1px solid #d0b8824d;border-bottom:1px solid #d0b8823b;border-radius:10px;background:linear-gradient(90deg,#efc77805,#efc77810,#efc77805)}
+#hyeonbit-rug .skill-toast::after{content:'';position:absolute;inset:0;z-index:2;border-radius:inherit;background:linear-gradient(180deg,#0b1321e6,transparent 32%,transparent 68%,#0b1321e6)}
+#hyeonbit-rug .skill-reel{position:absolute;inset:0;perspective:430px;transform-style:preserve-3d}
+#hyeonbit-rug .skill-reel-row{position:absolute;left:50%;top:50%;width:100%;white-space:nowrap;font:600 17px system-ui,sans-serif;line-height:30px;text-shadow:0 1px 5px #0007;backface-visibility:hidden;will-change:transform,opacity;transform-origin:center}
+#hyeonbit-rug .skill-reel-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){#hyeonbit-rug .skill-toast{transition:none}}
+
+#hyeonbit-rug main{position:relative}
+#hyeonbit-rug #effects{position:absolute;left:0;top:0;pointer-events:none;background:transparent!important}
+
+
+/* One compact settings theme, shared by the desktop window and web dialog. */
+#hyeonbit-rug .native-chrome{display:none}
+#hyeonbit-rug #settings{box-sizing:border-box;width:min(1020px,calc(100% - 32px));max-height:calc(100vh - 32px);padding:0;overflow:auto;border:1px solid #725596;border-radius:15px;background:radial-gradient(ellipse at 90% 0%,#51358430,transparent 45%),#161720;color:#f1edff;color-scheme:dark;box-shadow:0 24px 70px #0009,inset 0 1px #e6d6ff20}
+#hyeonbit-rug #settings::backdrop{background:#09071680}
+#hyeonbit-rug #settingsForm{box-sizing:border-box;margin:0;padding:22px;display:grid;grid-template-columns:minmax(260px,.95fr) minmax(320px,1.05fr);gap:18px;align-items:start;font-family:'Segoe UI','Malgun Gothic',sans-serif}
+#hyeonbit-rug .pixel-title{display:flex;align-items:center;gap:16px;grid-column:1/-1;border-left:3px solid #b47ff1;padding:0 0 0 16px}
+#hyeonbit-rug .settings-heading{flex:1;min-width:0}
+#hyeonbit-rug .pixel-title small{display:block;color:#cb98ff;letter-spacing:.17em;font-size:10px;font-weight:700;margin-bottom:5px}
+#hyeonbit-rug .pixel-title h2{margin:0;color:#f5f1ff;font-size:25px;font-weight:750;letter-spacing:-.04em}
+#hyeonbit-rug .pixel-title p{margin:5px 0 0;color:#b6abc6;font-size:12px}
+#hyeonbit-rug .settings-brand-logo{width:60px;height:60px;object-fit:contain;flex:none;filter:drop-shadow(0 7px 14px #08081180)}
+#hyeonbit-rug .pixel-panel{min-inline-size:0;margin:0;padding:12px 16px 16px;border:1px solid #685281;border-bottom-color:#44374f;border-radius:12px;background:linear-gradient(135deg,#2c293b,#1d1e27 75%);box-shadow:inset 0 1px #eddaff0b,0 5px 12px #0003;align-self:start}
+#hyeonbit-rug .pixel-panel legend{padding:3px 8px;background:#252331;color:#e9d7ff;border-radius:5px;font-size:14px;font-weight:700}
+#hyeonbit-rug #artBox{height:178px;display:grid;place-items:center;padding:10px;box-sizing:border-box;border:1px solid #50405f;border-radius:9px;background:radial-gradient(ellipse,#38304770,#15151e);box-shadow:inset 0 3px 14px #0004;margin:2px 0 12px}
+#hyeonbit-rug #artPreview{width:100%;max-width:100%;height:156px;object-fit:contain;filter:drop-shadow(0 7px 6px #0005)}
+#hyeonbit-rug #artDefault{font-size:12px;color:#b6abc6}
+#hyeonbit-rug .settings-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start}
+#hyeonbit-rug #settings button{box-sizing:border-box;position:relative;width:auto;min-height:36px;padding:8px 12px;border:1px solid #786889;border-radius:8px;background:linear-gradient(#30303d,#22232d);color:#f4efff;font:600 13px/1.4 'Segoe UI','Malgun Gothic',sans-serif;box-shadow:inset 0 1px #fff1,0 2px 4px #0003;cursor:pointer;app-region:no-drag;-webkit-app-region:no-drag}
+#hyeonbit-rug #settings button:not(:disabled):hover{background:#3a304b;border-color:#b58ce0}
+#hyeonbit-rug #settings button:not(:disabled):active{background:#453654;box-shadow:inset 0 1px 4px #0004}
+#hyeonbit-rug #settings button:disabled{opacity:.6;cursor:default}
+#hyeonbit-rug #settings .primary-button{background:linear-gradient(#8849d3,#642ba3);border-color:#bd88ef;color:#fff}
+#hyeonbit-rug #settings .primary-button:not(:disabled):hover{background:#8950cb}
+#hyeonbit-rug #settings [hidden]{display:none!important}
+#hyeonbit-rug #settings :focus-visible{outline:2px solid #68dfe9;outline-offset:3px}
+#hyeonbit-rug .settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;margin:6px 0;font-size:13px;color:#e0d5ec}
+#hyeonbit-rug .settings-row>span{flex:none}
+#hyeonbit-rug .settings-row output{font:600 12px 'Segoe UI',sans-serif;white-space:nowrap;color:#e9d8ff;background:#15151e;border:1px solid #5c506f;padding:4px 7px;border-radius:6px}
+#hyeonbit-rug .settings-note{font-size:11px;line-height:1.6;color:#b8adc6;margin:8px 0 0}
+#hyeonbit-rug .settings-range{margin-top:12px}
+#hyeonbit-rug #settings input[type=range]{display:block;width:100%;height:22px;margin:2px 0 0;accent-color:#b379fb;cursor:pointer}
+#hyeonbit-rug .settings-help{margin-top:12px;border-top:1px solid #5e4a6d;padding-top:10px;font-size:11px;line-height:1.65;color:#b8adc6}
+#hyeonbit-rug .settings-help summary{cursor:pointer;color:#d7bbea;width:fit-content}
+#hyeonbit-rug .settings-help p{margin:7px 0}
+#hyeonbit-rug .skill-panel{grid-column:1/-1}
+#hyeonbit-rug .skill-settings-grid{display:grid;grid-template-columns:minmax(260px,.95fr) minmax(320px,1.05fr);gap:24px;align-items:center}
+#hyeonbit-rug .settings-skill-preview{display:block;width:100%;height:124px;max-height:124px;border:1px solid #554365;border-radius:9px;background:radial-gradient(ellipse,#33283f,#171820);object-fit:contain}
+#hyeonbit-rug .settings-check{display:inline-flex;align-items:center;gap:8px;width:fit-content;margin-top:12px;color:#e0d5ec;font-size:12px;cursor:pointer}
+#hyeonbit-rug #settings input[type=checkbox]{appearance:none;width:34px;height:20px;margin:0;border-radius:20px;background:#363440;border:1px solid #6d5c7e;position:relative;cursor:pointer;flex:none}
+#hyeonbit-rug #settings input[type=checkbox]:before{content:'';position:absolute;width:14px;height:14px;left:2px;top:2px;border-radius:50%;background:#ccc0db;transition:transform .15s}
+#hyeonbit-rug #settings input[type=checkbox]:checked{background:#873de0;border-color:#bb82fa}
+#hyeonbit-rug #settings input[type=checkbox]:checked:before{transform:translateX(14px);background:#fcf5ff}
+#hyeonbit-rug .settings-bottom{display:flex;align-items:center;gap:12px;grid-column:1/-1;border-top:1px solid #54405e;padding-top:14px}
+#hyeonbit-rug #settingsStatus{flex:1;min-width:0;margin:0;color:#6fdce5;font-size:11px;line-height:1.5}
+#hyeonbit-rug #closeSettings{min-width:76px}
+body.settings-mode{margin:0;background:#161720}
+body.settings-mode #hyeonbit-rug :is(header,main,footer){display:none}
+body.settings-mode #hyeonbit-rug .native-chrome{display:block;position:sticky;top:0;z-index:1;height:36px;background:#161720;border-bottom:1px solid #493552;box-sizing:border-box}
+body.settings-mode #hyeonbit-rug .native-caption{display:flex;align-items:center;gap:7px;box-sizing:border-box;padding-left:12px;width:env(titlebar-area-width,calc(100% - 144px));height:36px;color:#bcb1cd;font-size:12px;user-select:none;app-region:drag;-webkit-app-region:drag}
+#hyeonbit-rug .native-caption img{width:19px;height:19px;object-fit:contain}
+body.settings-mode #hyeonbit-rug #settings{position:static;width:100%;max-width:none;max-height:none;margin:0;border:0;border-radius:0;min-height:calc(100vh - 36px);box-shadow:inset 0 0 0 1px #594169}
+body.settings-mode,#hyeonbit-rug #settings,#hyeonbit-rug #settings *{scrollbar-width:thin;scrollbar-color:#8b67b3 #171824}
+body.settings-mode::-webkit-scrollbar,#hyeonbit-rug #settings::-webkit-scrollbar,#hyeonbit-rug #settings *::-webkit-scrollbar{width:9px;height:9px}
+body.settings-mode::-webkit-scrollbar-track,#hyeonbit-rug #settings::-webkit-scrollbar-track,#hyeonbit-rug #settings *::-webkit-scrollbar-track{background:#171824;border-radius:10px}
+body.settings-mode::-webkit-scrollbar-thumb,#hyeonbit-rug #settings::-webkit-scrollbar-thumb,#hyeonbit-rug #settings *::-webkit-scrollbar-thumb{background:#8b67b3;border:2px solid #171824;border-radius:10px}
+@media(max-width:760px){#hyeonbit-rug #settingsForm,#hyeonbit-rug .skill-settings-grid{grid-template-columns:1fr}#hyeonbit-rug #settingsForm{padding:16px;gap:14px}#hyeonbit-rug .skill-settings-grid{gap:12px}#hyeonbit-rug .settings-skill-preview{height:100px}#hyeonbit-rug .pixel-title h2{font-size:22px}}
+
+/* App-rendered popup: no OS select popup or inherited light-mode option colors. */
+#hyeonbit-rug #settings select[data-rug-select]{display:none!important}
+#hyeonbit-rug #settings .rug-select-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:160px;max-width:76%;text-align:left;background:#292634;color:#f6f0ff;opacity:1;padding:10px 12px;line-height:1.5}
+#hyeonbit-rug #settings .rug-select-trigger span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#f6f0ff}
+#hyeonbit-rug #settings .rug-select-trigger:after{content:'';width:7px;height:7px;border-right:2px solid #d3b8ef;border-bottom:2px solid #d3b8ef;transform:rotate(45deg) translateY(-2px);flex:none}
+#hyeonbit-rug #settings .rug-select-trigger[aria-expanded=true]{border-color:#bc90ec;background:#342b46;box-shadow:0 0 0 2px #af7cdf25}
+#hyeonbit-rug #settings .rug-select-trigger:disabled{background:#23212d;color:#b6adc7;opacity:1;cursor:default}
+#hyeonbit-rug #settings .rug-select-trigger:disabled span{color:#b6adc7}
+#hyeonbit-rug #settings .rug-select-menu{position:fixed;inset:auto;margin:0;box-sizing:border-box;z-index:10000;overflow-y:auto;overscroll-behavior:contain;padding:6px;border:1px solid #a07cbe;border-radius:10px;background:#211e2c;color:#f6f0ff;color-scheme:dark;box-shadow:0 16px 40px #06030db3,inset 0 1px #e7d1ff1f;font:600 13px/1.5 'Segoe UI','Malgun Gothic',sans-serif;text-align:left;scrollbar-gutter:stable;app-region:no-drag;-webkit-app-region:no-drag}
+#hyeonbit-rug #settings .rug-select-menu[hidden]{display:none!important}
+#hyeonbit-rug #settings .rug-select-option{position:relative;padding:10px 25px 10px 11px;min-height:36px;box-sizing:border-box;border-radius:6px;background:#211e2c;color:#f6f0ff;cursor:pointer;overflow-wrap:anywhere;user-select:none}
+#hyeonbit-rug #settings .rug-select-option[aria-selected=true]{background:#49345f;color:#fff}
+#hyeonbit-rug #settings .rug-select-option[aria-selected=true]:after{content:'✓';position:absolute;right:9px;color:#e5c3ff}
+#hyeonbit-rug #settings .rug-select-option.is-active{background:#62477f;color:#fff;box-shadow:inset 0 0 0 1px #bc92df}
+#hyeonbit-rug #settings .rug-select-option[aria-disabled=true]{color:#a99cb9;cursor:default}
+@media(max-width:480px){#hyeonbit-rug #settings .rug-select-trigger{max-width:100%;width:100%}}
+@media(forced-colors:active){#hyeonbit-rug #settings .rug-select-option.is-active{outline:2px solid Highlight}}
+
+/* Constrain scrolling to the settings content, never the native window root. */
+html{scrollbar-color:#8b67b3 #171824;scrollbar-width:thin}
+html::-webkit-scrollbar{width:9px;background:#171824}
+html::-webkit-scrollbar-thumb{background:#8b67b3;border:2px solid #171824;border-radius:9px}
+body.settings-mode{height:100vh;overflow:hidden}
+body.settings-mode #hyeonbit-rug #settings{height:calc(100vh - 36px);min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable}
+#hyeonbit-rug #settings .rug-select-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;overflow-wrap:normal;word-break:normal}
+#hyeonbit-rug #settings .rug-select-menu{overflow-x:hidden;scrollbar-gutter:stable}
+#hyeonbit-rug #settings .rug-select-trigger{min-width:0;flex-shrink:1}
+#hyeonbit-rug #settings .rug-select-trigger span{min-width:0}

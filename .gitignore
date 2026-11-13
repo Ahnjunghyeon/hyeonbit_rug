@@ -1,0 +1,39 @@
+# Dependencies and package-manager caches
+node_modules/
+.npm/
+.pnpm-store/
+
+# Electron build output
+/dist/
+/out/
+/release/
+
+# Logs, test output and temporary files
+*.log
+/coverage/
+/.cache/
+*.tmp
+*.swp
+*.swo
+
+# Local environment and signing credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.p12
+*.pfx
+*.key
+
+# Local app state (source, assets and lockfiles remain tracked)
+/rug-settings.json
+/rug-settings.json.*
+
+# Editor and OS files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.DS_Store
+Thumbs.db
+Desktop.ini

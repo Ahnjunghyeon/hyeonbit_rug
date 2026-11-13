@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>현빗 러그 · 검기 버전</title><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:;"><link rel="icon" href="app-icon-v2.png"><link rel="stylesheet" href="style.css"></head><body>
+<div id="hyeonbit-rug">
+  <div class="native-chrome"><div class="native-caption">
+    <img src="app-icon-v2.png" alt=""><span>현빗 러그 · 환경설정</span>
+  </div></div>
+
+  <header><strong>현빗 러그</strong><small>브랜딩 v2 · 검기 버전</small></header>
+  <main>
+    <canvas id="desktop" aria-label="러그를 잡아 폴더를 덮는 모의 Windows 바탕화면"></canvas>
+    <canvas id="effects" aria-hidden="true"></canvas>
+    <p id="hint">좌클릭 이동 · 우클릭 베기 · Ctrl+휠 크기 · Ctrl+Shift+휠 검술</p>
+  </main>
+  <footer>
+    <div class="skill-picker">
+    <fieldset class="skill-group"><legend>9주 검기</legend>
+      <button id="water" aria-pressed="true">수주 - 토미오카 기유</button>
+      <button id="ember" aria-pressed="false">염주 - 렌고쿠 쿄쥬로</button>
+      <button id="mist" aria-pressed="false">하주 - 토키토 무이치로</button>
+      <button id="insect" aria-pressed="false">충주 - 코쵸우 시노부</button>
+      <button id="love" aria-pressed="false">연주 - 칸로지 미츠리</button>
+      <button id="serpent" aria-pressed="false">사주 - 이구로 오바나이</button>
+      <button id="sound" aria-pressed="false">음주 - 우즈이 텐겐</button>
+      <button id="stone" aria-pressed="false">암주 - 히메지마 교메이</button>
+      <button id="spin" aria-pressed="false">풍주 - 시나즈가와 사네미</button>
+    </fieldset>
+    <fieldset class="skill-group"><legend>기타 호흡</legend>
+      <button id="zap" aria-pressed="false">번개의 호흡 - 젠이츠</button>
+    </fieldset>
+    <fieldset class="skill-group"><legend>히노카미 카구라</legend>
+      <button id="hinokami" aria-pressed="false">히노카미 카구라 - 탄지로</button>
+    </fieldset>
+    </div>
+    <div><button id="openSettings">환경설정</button> <button id="reset">러그 원위치</button></div>
+  </footer>
+  <div id="skillToast" class="skill-toast" role="status" aria-live="polite" hidden></div>
+  <div id="sizeToast" class="size-toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="settings" aria-labelledby="settingsTitle">
+    <form id="settingsForm">
+      <div class="pixel-title"><div class="settings-heading"><small>HYEONBIT RUG</small><h2 id="settingsTitle">러그 환경설정</h2><p>원하는 모습을 고르면 바로 적용됩니다.</p></div><img class="settings-brand-logo" src="app-icon-v2.png" alt="현빗 러그 앱 로고" width="60" height="60"></div>
+      <fieldset class="pixel-panel appearance-panel"><legend>러그 디자인</legend>
+        <div class="settings-row"><span>러그 선택</span><select id="rugPreset" aria-label="러그 선택"></select></div>
+        <div id="artBox"><img id="artPreview" alt="러그 디자인 미리보기" hidden><span id="artDefault">기본 러그 디자인</span></div>
+        <div class="settings-actions"><button id="chooseRug" class="primary-button" type="button">이미지 변경</button><button id="clearArt" type="button">기본 이미지</button></div>
+        <input id="rugFile" type="file" accept="image/png,image/webp,.png,.webp" hidden aria-label="러그 이미지 파일">
+        <p class="settings-note">PNG · WebP, 최대 16MB · 투명 영역 유지</p>
+      </fieldset>
+      <fieldset class="pixel-panel display-panel"><legend>화면과 크기</legend>
+        <div class="settings-row"><span>표시 모니터</span><select id="rugDisplay" aria-label="표시 모니터"><option value="primary">주 모니터 (자동)</option></select></div>
+        <p class="settings-note">모니터를 바꾸면 러그가 해당 화면에 원위치됩니다.</p>
+        <div class="settings-row"><span>표시 위치</span><select id="rugLayer" aria-label="러그 표시 위치"><option value="bottom">최하위 · 바탕화면</option><option value="top">최상위 · 다른 창 위</option></select></div>
+        <div class="settings-range"><label class="settings-row" for="rugSize">러그 크기 <output id="sizeValue">100%</output></label><input id="rugSize" type="range" min="60" max="300" step="5" value="100"></div>
+        <details class="settings-help"><summary>화면 배치와 조작 안내</summary><p>최상위는 일반 창 위에 표시됩니다. 300%로 키우면 화면을 가리는 용도로 사용할 수 있습니다.</p><p>Windows 앱에서 모니터를 선택할 수 있습니다. 연결이 끊기면 주 모니터로 돌아옵니다.</p><p>좌클릭 이동 · 우클릭 베기<br>Ctrl+휠 크기 · Ctrl+Shift+휠 검술<br>Ctrl+Shift+R 원위치 · Shift 입력 통과</p></details>
+      </fieldset>
+      <fieldset class="pixel-panel skill-panel"><legend>검술과 연출</legend>
+        <div class="skill-settings-grid">
+          <div><canvas id="skillPreview" class="settings-skill-preview" width="480" height="240" aria-label="선택한 검기의 실제 이미지 미리보기"></canvas><p class="settings-note">선택한 검기의 실제 적용 이미지입니다.</p></div>
+          <div><div class="settings-row"><span>기본 검기</span><select id="defaultSkill" aria-label="기본 검기"></select></div>
+            <div class="settings-range"><label class="settings-row" for="effectSize">검기 크기 <output id="effectValue">100%</output></label><input id="effectSize" type="range" min="25" max="150" step="5" value="100"></div>
+            <label class="settings-check"><input id="animateReset" type="checkbox" checked> 원위치할 때 펼쳐지는 연출</label>
+          </div>
+        </div>
+      </fieldset>
+      <div class="settings-bottom"><button id="defaultSettings" type="button">기본값 복원</button><p id="settingsStatus" role="status" aria-live="polite" aria-atomic="true"></p><button id="closeSettings" class="primary-button" type="button">닫기</button></div>
+    </form>
+  </dialog>
+  <dialog id="explorer"><form method="dialog"><button>닫기</button></form><h3 id="folderName"></h3><p>📄 샘플 문서.txt</p></dialog>
+</div>
+
+<script src="settings.js"></script>
+<script src="breathing-catalog.js"></script>
+<script src="breathing-ui.js"></script>
+<script src="scrap-effects.js"></script>
+<script src="hit-grid.js"></script>
+<script src="impact-batch.js"></script>
+<script src="surface-sampler.js"></script>
+<script src="breathing-trail.js"></script>
+<script src="rug-resize.js"></script>
+<script src="painted-contacts.js"></script>
+<script src="rug-layout.js"></script>
+<script src="rug-fx.js"></script>
+<script src="settings-select.js"></script>
+<script src="rug-presets.js"></script>
+<script src="settings-ui.js"></script>
+<script src="rug.js"></script>
+</body></html>
